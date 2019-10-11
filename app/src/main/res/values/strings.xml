@@ -5,4 +5,5 @@
     <string name="slogan">Wisata Jadi Lebih Asik</string>
     <string name="btn_new_account">New Account</string>
     <string name="username_label">Username</string>
+    <string name="password_label">password</string>
 </resources>
