@@ -49,7 +49,7 @@ dan nikmati wisatamu"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
-        android:id="@+id/btn_signIn"
+        android:id="@+id/btn_exploreNow_successRegister"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="48dp"

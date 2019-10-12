@@ -8,4 +8,7 @@
     <color name="blueSecondary">#2595f5</color>
     <color name="grayPrimary">#8d8d8d</color>
     <color name="blackPrimary">#21272c</color>
+    <color name="greenPrimary">#1abc9c</color>
+
+    <color name="bgPrimary">#EDf1f8</color>
 </resources>
