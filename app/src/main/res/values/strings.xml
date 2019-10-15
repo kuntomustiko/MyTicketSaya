@@ -19,8 +19,8 @@
     <string name="all_plus">+</string>
     <string name="all_saveprofile">Save Profile</string>
     <string name="home_mydashboard">My Dashboard</string>
-    <string name="home_namaprofile">Angga Rezky</string>
-    <string name="home_descriptionprofile">Traveller</string>
+    <string name="home_namaprofile">Kunto Mustiko</string>
+    <string name="home_descriptionprofile">Programming</string>
     <string name="home_balance">$ 240</string>
     <string name="home_mainmenu">Main Menus</string>
     <string name="home_mainmenudesc">Explore the beutiful island</string>
@@ -49,7 +49,7 @@
     <string name="ticketdetailact_menu_subinformation">Knowing before your travel</string>
     <string name="registerone_title">Create Account</string>
     <string name="registeroneact_subtitle">Please fill up the forms below  for informations</string>
-    <string name="registertwoact_subtitle">Let the world knows yourself  more better and ever</string>
+    <string name="registertwoact_subtitle">Let the world knows yourself\n  more better and ever</string>
     <string name="registertwoact_title">Selfie Time</string>
     <string name="all_createnewaccount">Create New Account</string>
     <string name="ticketcheckoutact_totalharga">Total Price</string>

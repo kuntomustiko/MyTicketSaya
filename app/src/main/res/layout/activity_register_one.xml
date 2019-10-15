@@ -135,12 +135,12 @@
                 android:textColor="@color/grayPrimary"
                 android:textSize="20sp" />
             <EditText
-                android:id="@+id/edt_registeroneact_email"
+                android:id="@+id/edt_registeroneact_emailaddress"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/bg_input_edit"
                 android:fontFamily="@font/mmedium"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
                 android:lines="1"
                 android:paddingLeft="12dp"
                 android:textColor="@color/blackPrimary" />
@@ -172,7 +172,7 @@
         android:background="@drawable/bg_layout_white"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/btn_continue_registerOne"
+        app:layout_constraintEnd_toStartOf="@+id/btn_registeroneact_continue"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
