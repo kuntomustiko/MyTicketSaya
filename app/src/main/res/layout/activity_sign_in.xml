@@ -50,10 +50,11 @@
                 android:layout_height="wrap_content"
                 />
             <EditText
+                android:id="@+id/edt_signinact_username"
                 android:inputType="text"
                 android:lines="1"
                 android:paddingLeft="12dp"
-                android:hint="nama user"
+                android:hint="@string/all_username"
                 android:fontFamily="@font/mmedium"
                 android:textColor="@color/blackPrimary"
                 android:background="@drawable/bg_input_edit"
@@ -78,10 +79,11 @@
                 android:layout_height="wrap_content"
                 />
             <EditText
+                android:id="@+id/edt_signinact_password"
                 android:inputType="textPassword"
                 android:lines="1"
                 android:paddingLeft="12dp"
-                android:hint="password"
+                android:hint="@string/all_Password"
                 android:fontFamily="@font/mmedium"
                 android:textColor="@color/blackPrimary"
                 android:background="@drawable/bg_input_edit"
@@ -90,7 +92,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_signIn_signIn"
+            android:id="@+id/btn_signinact_signin"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginLeft="24dp"
@@ -106,12 +108,12 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/btn_newAccount_signIn"
+        android:id="@+id/tv_signinact_newaccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/mlight"
-        android:text="Create New Account"
+        android:text="@string/all_createnewaccount"
         android:textColor="#fff"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"

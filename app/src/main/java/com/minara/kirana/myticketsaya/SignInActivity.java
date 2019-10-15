@@ -11,17 +11,17 @@ import android.widget.TextView;
 public class SignInActivity extends AppCompatActivity {
 
 
-    TextView btn_new_account;
-    Button btn_signIn_signIn;
+    TextView tvNewAccount;
+    Button btnSignIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        btn_new_account = findViewById(R.id.btn_newAccount_signIn);
-        btn_signIn_signIn = findViewById(R.id.btn_signIn_signIn);
+        tvNewAccount = findViewById(R.id.tv_signinact_newaccount);
+        btnSignIn = findViewById(R.id.btn_signinact_signin);
 
-        btn_new_account.setOnClickListener(new View.OnClickListener() {
+        tvNewAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent gotoRegisterOne = new Intent(SignInActivity.this, RegisterOneActivity.class);
@@ -29,7 +29,7 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-        btn_signIn_signIn.setOnClickListener(new View.OnClickListener() {
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent gotoHome = new Intent(SignInActivity.this, HomeActivity.class);

@@ -9,17 +9,18 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class RegisterTwoActivity extends AppCompatActivity {
-    LinearLayout btn_back;
 
-    Button btn_continue_registerTwo;
+    LinearLayout llback;
+    Button btnContinueRegisterTwo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_two);
-        btn_continue_registerTwo = findViewById(R.id.btn_continue_registerTwo);
 
-        btn_back = findViewById(R.id.btn_back_registerOne);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        btnContinueRegisterTwo = findViewById(R.id.btn_registertwoact_continue);
+        llback = findViewById(R.id.ll_registeroneact_back);
+
+        llback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent backtoSignIn = new Intent(RegisterTwoActivity.this, RegisterOneActivity.class);
@@ -27,7 +28,7 @@ public class RegisterTwoActivity extends AppCompatActivity {
             }
         });
 
-        btn_continue_registerTwo.setOnClickListener(new View.OnClickListener() {
+        btnContinueRegisterTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent backtoSuccess = new Intent(RegisterTwoActivity.this, SuccessRegisterActivity.class);

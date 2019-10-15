@@ -17,12 +17,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_registertwoact_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/mlight"
-        android:text="Selfie Time"
+        android:text="@string/registertwoact_title"
         android:textAlignment="center"
         android:textColor="#fff"
         android:textSize="24sp"
@@ -31,20 +31,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_registertwoact_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/mlight"
         android:lineSpacingExtra="9dp"
-        android:text="Let the world knows yourself\n
-more better and ever"
+        android:text="@string/registertwoact_subtitle"
         android:textAlignment="center"
         android:textColor="#fff"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_registertwoact_title" />
 
 
     <LinearLayout
@@ -60,7 +59,7 @@ more better and ever"
         android:paddingBottom="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/tv_registertwoact_subtitle">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -111,6 +110,7 @@ more better and ever"
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/edt_registertwoact_nama"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/bg_input_edit"
@@ -141,6 +141,7 @@ more better and ever"
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/edt_registertwoact_bio"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/bg_input_edit"
@@ -156,7 +157,7 @@ more better and ever"
 
 
     <Button
-        android:id="@+id/btn_continue_registerTwo"
+        android:id="@+id/btn_registertwoact_continue"
         android:layout_width="250dp"
         android:layout_height="55dp"
         android:layout_marginTop="24dp"
@@ -170,14 +171,14 @@ more better and ever"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
-        android:id="@+id/btn_back_registerOne"
+        android:id="@+id/btn_registertwo_back"
         android:layout_width="90dp"
         android:layout_height="55dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/bg_layout_white"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/btn_continue_registerOne"
+        app:layout_constraintEnd_toStartOf="@+id/btn_registertwoact_continue"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">

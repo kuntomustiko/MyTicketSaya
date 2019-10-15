@@ -8,6 +8,7 @@
     tools:context=".TicketDetailActivity">
 
     <ImageView
+        android:id="@+id/iv_ticketdetailact_bgheader"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:layout_marginStart="0dp"
@@ -20,14 +21,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/title_ticket"
+        android:id="@+id/tv_ticketdetailact_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/mlight"
-        android:text="Menara Pisa"
+        android:text="@string/ticketdetailact_title"
         android:textAlignment="center"
         android:textColor="#FFF"
         android:textSize="24sp"
@@ -37,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/location_ticket"
+        android:id="@+id/tv_ticketdetailact_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -45,13 +46,13 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/mlight"
         android:lineSpacingExtra="9dp"
-        android:text="Pisa, Italy"
+        android:text="@string/ticketdetailact_location"
         android:textAlignment="center"
         android:textColor="#FFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_ticket" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_ticketdetailact_title" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -68,13 +69,13 @@
         android:paddingBottom="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location_ticket">
+        app:layout_constraintTop_toBottomOf="@+id/tv_ticketdetailact_location">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mregular"
-            android:text="Information"
+            android:text="@string/ticketdetailact_menu_information"
             android:textColor="@color/blackPrimary"
             android:textSize="18sp" />
 
@@ -82,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mlight"
-            android:text="Knowing before your travel"
+            android:text="@string/ticketdetailact_menu_subinformation"
             android:textColor="@color/grayPrimary"
             android:textSize="16sp" />
 
@@ -206,7 +207,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_ticketDetailAct_buyTicket"
+        android:id="@+id/btn_ticketdetailact_buyticket"
         android:layout_width="250dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
@@ -224,7 +225,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
-        android:id="@+id/ll_ticketDetailAct_ll"
+        android:id="@+id/ll_ticketdetailact_back"
         android:layout_width="90dp"
         android:layout_height="55dp"
         android:layout_marginStart="16dp"
@@ -233,7 +234,7 @@
         android:background="@drawable/bg_layout_white"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/btn_ticketDetailAct_buyTicket"
+        app:layout_constraintEnd_toStartOf="@+id/btn_ticketdetailact_buyticket"
         app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">

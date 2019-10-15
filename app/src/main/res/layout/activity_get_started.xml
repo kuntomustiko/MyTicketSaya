@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/view_getstartedact_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_overlay_started"
@@ -28,7 +28,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_getstartedact_logo"
         android:layout_width="68dp"
         android:layout_height="45dp"
         android:layout_marginTop="120dp"
@@ -37,10 +37,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.299"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        app:layout_constraintTop_toTopOf="@+id/view_getstartedact_bg" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_getstartedact_title"
         android:layout_width="wrap_content"
         android:lineSpacingExtra="9dp"
         android:layout_height="wrap_content"
@@ -52,10 +52,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.253"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_getstartedact_logo" />
 
     <Button
-        android:id="@+id/btn_signIn"
+        android:id="@+id/btn_getstartedact_signin"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="48dp"
@@ -69,10 +69,10 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_getstartedact_title" />
 
     <Button
-        android:id="@+id/btn_newAccount_create_getStarted"
+        android:id="@+id/btn_getstartedact_newaccount"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="32dp"
@@ -86,5 +86,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_signIn" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_getstartedact_signin" />
 </androidx.constraintlayout.widget.ConstraintLayout>
