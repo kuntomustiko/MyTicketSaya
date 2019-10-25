@@ -21,7 +21,7 @@ public class MyProfileActivity extends AppCompatActivity {
         llMenaraPisa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoMyTicketDetail = new Intent(MyProfileActivity.this, MyTIcketDetailActivity.class);
+                Intent gotoMyTicketDetail = new Intent(MyProfileActivity.this, MyTicketDetailActivity.class);
                 startActivity(gotoMyTicketDetail);
             }
         });

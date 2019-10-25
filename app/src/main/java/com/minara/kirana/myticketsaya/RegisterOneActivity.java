@@ -53,6 +53,9 @@ public class RegisterOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                btnContinueRegisterOne.setEnabled(false);
+                btnContinueRegisterOne.setText("loading");
+
                 // 12 - a1
                 // menyimpan data kepada local storage (handphone)
                 SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);

@@ -95,7 +95,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_photospot_ticket"
+                    android:id="@+id/tv_ticketcheckoutact_nama_wisata"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mregular"
@@ -104,6 +104,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tv_ticketcheckoutact_lokasi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mlight"
@@ -145,7 +146,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_ticketcheckoutact_shortdetail"
+            android:id="@+id/tv_ticketcheckoutact_ketentuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mlight"
@@ -201,7 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/mmedium"
-                android:text="@string/ticketcheckoutact_mybalance"
+                tools:text="@string/ticketcheckoutact_mybalance"
                 android:textColor="@color/bluePrimary"
                 android:textSize="16sp" />
         </LinearLayout>

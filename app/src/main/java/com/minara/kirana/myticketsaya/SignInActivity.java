@@ -31,6 +31,8 @@ public class SignInActivity extends AppCompatActivity {
     String USERNAME_KEY = "usernamekey";
     String username_key = "";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,9 @@ public class SignInActivity extends AppCompatActivity {
 
                 String username = edtUsername.getText().toString();
                 final String password = edtPassword.getText().toString();
+
+                btnSignIn.setEnabled(false);
+                btnSignIn.setText("loading");
                 // todo 12 - c 2
                 reference = FirebaseDatabase.getInstance().getReference().child("Users")
                         .child(username);
@@ -98,4 +103,6 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

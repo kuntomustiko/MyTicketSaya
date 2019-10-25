@@ -105,7 +105,7 @@ public class RegisterTwoActivity extends AppCompatActivity {
 
 //                            String uri_photo =taskSnapshot.getDownloadUrl().toString();
                             String uri_photo =taskSnapshot.getUploadSessionUri().toString();
-                            reference.getRef().child("uri_photo_profile").setValue(uri_photo);
+                            reference.getRef().child("url_photo_profile").setValue(uri_photo);
                             reference.getRef().child("nama_lengkap").setValue(edtNama.getText().toString());
                             reference.getRef().child("bio").setValue(edtBio.getText().toString());
 

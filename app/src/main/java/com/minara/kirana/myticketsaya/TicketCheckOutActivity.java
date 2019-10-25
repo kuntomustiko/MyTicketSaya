@@ -1,7 +1,10 @@
 package com.minara.kirana.myticketsaya;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -9,21 +12,51 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.util.Random;
+
 public class TicketCheckOutActivity extends AppCompatActivity {
 
     ImageView ivNotiveUang;
     Button btnPlus, btnMinus, btnPayNow;
-    TextView tvJumlahTicket, tvTotalHarga, tvMyBalance;
+    TextView tvJumlahTicket, tvTotalHarga, tvMyBalance, tv_ticketcheckoutact_nama_wisata,
+            tv_ticketcheckoutact_lokasi, tv_ticketcheckoutact_ketentuan;
     Integer valueJumlahTicket = 1;
-    Integer myBalance = 200;
+    Integer myBalance = 0;
     Integer valueTotalHarga = 0;
-    Integer valueHargaTicket = 50;
+    Integer valueHargaTicket = 0;
+
+    DatabaseReference reference, reference2, reference3;
+
+    // ambil dari local storage
+    String USERNAME_KEY = "usernamekey";
+    String username_key = "";
+
+    String username_key_new = "";
+
+    String date_wisata = "";
+    String time_wisata = "";
+
+    // generate normor integer secara random untuk nomor transaksi
+    Integer nomor_transaksi = new Random().nextInt();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_check_out);
+
+        getUsernameLocal();
+
+        // mengambil data dari intent
+        Bundle bundle = getIntent().getExtras();
+        final String jenis_ticket_baru = bundle.getString("jenis_ticket");
 
         ivNotiveUang = findViewById(R.id.noticeUang);
         btnPlus = findViewById(R.id.btn_plus);
@@ -33,18 +66,63 @@ public class TicketCheckOutActivity extends AppCompatActivity {
         tvMyBalance = findViewById(R.id.tv_ticketcheckoutact_mybalance);
         tvTotalHarga = findViewById(R.id.tv_ticketcheckoutact_totalharga);
 
+        tv_ticketcheckoutact_nama_wisata = findViewById(R.id.tv_ticketcheckoutact_nama_wisata);
+        tv_ticketcheckoutact_lokasi = findViewById(R.id.tv_ticketcheckoutact_lokasi);
+        tv_ticketcheckoutact_ketentuan = findViewById(R.id.tv_ticketcheckoutact_ketentuan);
+
         // default jumlah ticket awal
         tvJumlahTicket.setText(valueJumlahTicket.toString());
         // default btn minus hilang
         btnMinus.animate().alpha(0).setDuration(300).start();
         btnMinus.setEnabled(false);
 
-        tvMyBalance.setText(myBalance.toString());
-        tvTotalHarga.setText("US$ " + valueTotalHarga.toString()+" ");
-        valueTotalHarga = valueJumlahTicket * valueHargaTicket;
-        tvTotalHarga.setText("US$ " + valueTotalHarga.toString()+" ");
+        tvTotalHarga.setText("US$ " + valueTotalHarga.toString()+nomor_transaksi);
 
         ivNotiveUang.setVisibility(View.GONE);
+
+        // mengambil data Users dari firebase untuk di ambil user_balance nya aja
+        reference2 = FirebaseDatabase.getInstance().getReference().child("Users").child(username_key_new);
+        reference2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                myBalance = Integer.valueOf(dataSnapshot.child("user_balance").getValue().toString());
+                tvMyBalance.setText(myBalance.toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        // ambil data dari firebase berdasarkan intent
+        reference = FirebaseDatabase.getInstance().getReference().child("Wisata").child(jenis_ticket_baru);
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // menimpa data yang ada dengan data yang baru
+                tv_ticketcheckoutact_nama_wisata.setText(dataSnapshot.child("nama_wisata").getValue().toString());
+                tv_ticketcheckoutact_lokasi.setText(dataSnapshot.child("lokasi").getValue().toString());
+                tv_ticketcheckoutact_ketentuan.setText(dataSnapshot.child("ketentuan").getValue().toString());
+
+                // menyimpan ke dalam variabel
+                date_wisata = dataSnapshot.child("date_wisata").getValue().toString();
+                time_wisata = dataSnapshot.child("time_wisata").getValue().toString();
+
+                valueHargaTicket = Integer.valueOf(dataSnapshot.child("harga_ticket").getValue().toString());
+
+                // agar ketika pertama kali dijalankan valuetotalharga sudah sesuai dengan yang ada di firebase
+                valueTotalHarga = valueJumlahTicket * valueHargaTicket;
+                tvTotalHarga.setText("US$ " + valueTotalHarga.toString()+" ");
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         btnPlus.setOnClickListener(new View.OnClickListener() {
@@ -91,5 +169,46 @@ public class TicketCheckOutActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+        btnPayNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // menyimpan data user yang mengklik paynow ke firebase lalu membuat tabel baru "MyTickets"
+                reference3 = FirebaseDatabase.getInstance().getReference()
+                        .child("MyTickets")
+                        .child(username_key_new)
+                        .child(tv_ticketcheckoutact_nama_wisata.getText().toString() + nomor_transaksi );
+                reference3.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        reference3.getRef().child("nama_wisata").setValue(tv_ticketcheckoutact_nama_wisata.getText().toString());
+                        reference3.getRef().child("lokasi").setValue(tv_ticketcheckoutact_lokasi);
+                        reference3.getRef().child("ketentuan").setValue(tv_ticketcheckoutact_ketentuan);
+
+
+                        reference3.getRef().child("date_wisata").setValue(date_wisata);
+                        reference3.getRef().child("time_Wisata").setValue(time_wisata);
+
+                        Intent gotosuccessticket = new Intent(TicketCheckOutActivity.this, SuccessBuyTicketActivity.class);
+                        startActivity(gotosuccessticket);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
+    }
+
+    // ambil data dari local sharedpreference yang sebelumnya telah di simpan dari registerone
+    public void getUsernameLocal(){
+        SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
+        username_key_new = sharedPreferences.getString(username_key,"");
     }
 }
