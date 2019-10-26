@@ -2,7 +2,9 @@ package com.minara.kirana.myticketsaya;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -39,5 +41,23 @@ public class SuccessBuyTicketActivity extends AppCompatActivity {
 
         btnViewTicket.startAnimation(btt);
         btnMyDashboard.startAnimation(btt);
+
+        btnMyDashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotohome = new Intent(SuccessBuyTicketActivity.this, HomeActivity.class);
+                startActivity(gotohome);
+
+            }
+        });
+
+        btnViewTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotoprofile = new Intent(SuccessBuyTicketActivity.this, MyProfileActivity.class);
+                startActivity(gotoprofile);
+
+            }
+        });
     }
 }

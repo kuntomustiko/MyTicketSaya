@@ -32,7 +32,6 @@ public class SignInActivity extends AppCompatActivity {
     String username_key = "";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,44 +59,67 @@ public class SignInActivity extends AppCompatActivity {
 
                 btnSignIn.setEnabled(false);
                 btnSignIn.setText("loading");
-                // todo 12 - c 2
-                reference = FirebaseDatabase.getInstance().getReference().child("Users")
-                        .child(username);
-                
-                reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()){
 
-                            // ambil data password dari firebase
-                            String passwordFromFirebase = dataSnapshot.child("password").getValue().toString();
+                if (username.isEmpty()) {
+                    Toast.makeText(SignInActivity.this, "username kosong", Toast.LENGTH_SHORT).show();
+                    btnSignIn.setEnabled(true);
+                    btnSignIn.setText("Sign in");
+                } else {
 
-                            // validasi password dengan password firebase
-                            if (password.equals(passwordFromFirebase)){
+                    if (password.isEmpty()) {
+                        Toast.makeText(SignInActivity.this, "Password kosong", Toast.LENGTH_SHORT).show();
+                        btnSignIn.setEnabled(true);
+                        btnSignIn.setText("Sign in");
 
-                                // simpan username (key) di local
-                                SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString(username_key, edtUsername.getText().toString());
-                                editor.apply();
+                    } else {
+                        // todo 12 - c 2
+                        reference = FirebaseDatabase.getInstance().getReference().child("Users")
+                                .child(username);
 
-                                Intent gotoHome = new Intent(SignInActivity.this, HomeActivity.class);
-                                startActivity(gotoHome);
-                            } else{
-                                Toast.makeText(SignInActivity.this, "password salah", Toast.LENGTH_SHORT).show();
+                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists()) {
+
+                                    // ambil data password dari firebase
+                                    String passwordFromFirebase = dataSnapshot.child("password").getValue().toString();
+
+                                    // validasi password dengan password firebase
+                                    if (password.equals(passwordFromFirebase)) {
+
+                                        // simpan username (key) di local
+                                        SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString(username_key, edtUsername.getText().toString());
+                                        editor.apply();
+
+                                        Intent gotoHome = new Intent(SignInActivity.this, HomeActivity.class);
+                                        startActivity(gotoHome);
+                                    } else {
+                                        Toast.makeText(SignInActivity.this, "password salah", Toast.LENGTH_SHORT).show();
+
+                                        // ubah state menjadi
+                                        btnSignIn.setEnabled(true);
+                                        btnSignIn.setText("Sign in");
+                                    }
+
+                                } else {
+                                    Toast.makeText(SignInActivity.this, "username tidak ada", Toast.LENGTH_SHORT).show();
+
+                                    btnSignIn.setEnabled(true);
+                                    btnSignIn.setText("Sign in");
+                                }
                             }
 
-                        } else {
-                            Toast.makeText(SignInActivity.this, "username tidak ada", Toast.LENGTH_SHORT).show();
-                        }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                     }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
-
+                }
 
 
             }

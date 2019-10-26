@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.github.florent37.shapeofview.shapes.CircleView
-        android:id="@+id/iv_myprofileact_profile"
+        android:id="@+id/shape_myprofileact_profile"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="8dp"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/profile_myprofileact_profile"
+            android:id="@+id/iv_myprofileact_profile"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:src="@drawable/icon_nopic" />
@@ -51,7 +51,7 @@
     </com.github.florent37.shapeofview.shapes.CircleView>
 
     <TextView
-        android:id="@+id/tv_homeact_nama_profile"
+        android:id="@+id/tv_myprofileact_namalengkap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
@@ -66,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view_myprofileact_bgprofile" />
 
     <TextView
-        android:id="@+id/tv_homeact_desc_nama_profile"
+        android:id="@+id/tv_myprofileact_bio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -78,7 +78,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_homeact_nama_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_myprofileact_namalengkap" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -96,7 +96,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_homeact_desc_nama_profile">
+        app:layout_constraintTop_toBottomOf="@+id/tv_myprofileact_bio">
 
         <TextView
             android:layout_width="wrap_content"
@@ -121,120 +121,12 @@
             android:layout_marginBottom="16dp"
             android:background="#EDEDED" />
 
-        <LinearLayout
-            android:id="@+id/ll_myprofileact_menarapisa"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_myprofileact_myticket_place"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
+            android:layout_height="120dp">
 
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:src="@drawable/ic_ticket_buy" />
-
-            <LinearLayout
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="6dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_photospot_ticket"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/mregular"
-                    android:text="@string/myprofileact_menarapisa"
-                    android:textColor="@color/blackPrimary"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/mlight"
-                    android:text="@string/myprofileact_pisacityitaly"
-                    android:textColor="@color/grayPrimary"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:fontFamily="@font/mlight"
-                    android:text="@string/myprofileact_jmlticket"
-                    android:textColor="@color/bluePrimary"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:src="@drawable/ic_ticket_buy" />
-
-            <LinearLayout
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="6dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_photospot_ticket2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/mregular"
-                    android:text="Menara Pisa"
-                    android:textColor="@color/blackPrimary"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/mlight"
-                    android:text="@string/myprofileact_pisacityitaly"
-                    android:textColor="@color/grayPrimary"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:fontFamily="@font/mlight"
-                    android:text="@string/myprofileact_jmlticket"
-                    android:textColor="@color/bluePrimary"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
     <Button
@@ -273,4 +165,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_myprofileact_editprofile" />
 
+
+    <Button
+        android:id="@+id/btn_myprofileact_backhome"
+        android:layout_width="32dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

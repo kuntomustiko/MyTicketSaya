@@ -40,7 +40,7 @@ public class RegisterTwoActivity extends AppCompatActivity {
     DatabaseReference reference;
     StorageReference storage;
 
-    // ambil dari local storage
+    // ambil  data user yang sedang laogin melalui sharedprefrenece
     String USERNAME_KEY = "usernamekey";
     String username_key = "";
 

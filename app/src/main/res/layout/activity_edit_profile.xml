@@ -102,7 +102,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/edt_edtrofileact_nama"
+                        android:id="@+id/edt_edtprofileact_nama"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/bg_input_edit"
@@ -126,12 +126,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:fontFamily="@font/mlight"
-                        android:text="@string/all_yourPassion"
+                        android:text="@string/all_bio"
                         android:textColor="@color/grayPrimary"
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/edt_edtprofileact_passion"
+                        android:id="@+id/edt_edtprofileact_bio"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/bg_input_edit"
@@ -160,7 +160,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/edt_edtrofileact_username"
+                        android:id="@+id/edt_edtprofileact_username"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/bg_input_edit"
@@ -189,12 +189,12 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/edt_edtProfileAct_password"
+                        android:id="@+id/edt_edtprofileact_password"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/bg_input_edit"
                         android:fontFamily="@font/mmedium"
-                        android:inputType="numberPassword"
+                        android:inputType="text"
                         android:lines="1"
                         android:paddingLeft="12dp"
                         android:textColor="@color/blackPrimary" />
@@ -218,7 +218,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/edt_edtProfileAct_emailAddress"
+                        android:id="@+id/edt_edtprofileact_emailaddress"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/bg_input_edit"
@@ -268,7 +268,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/v_edtrofileact_profil"
+                    android:id="@+id/iv_edtprofileact_profil"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:src="@drawable/anggaphoto" />
@@ -276,6 +276,7 @@
             </com.github.florent37.shapeofview.shapes.CircleView>
 
             <Button
+                android:id="@+id/btn_edtprofileact_add_new_photo"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"

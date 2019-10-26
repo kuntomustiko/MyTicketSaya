@@ -31,8 +31,9 @@ public class TicketCheckOutActivity extends AppCompatActivity {
     Integer myBalance = 0;
     Integer valueTotalHarga = 0;
     Integer valueHargaTicket = 0;
+    Integer valuesisabalance = 0;
 
-    DatabaseReference reference, reference2, reference3;
+    DatabaseReference reference, reference2, reference3, reference4;
 
     // ambil dari local storage
     String USERNAME_KEY = "usernamekey";
@@ -76,7 +77,7 @@ public class TicketCheckOutActivity extends AppCompatActivity {
         btnMinus.animate().alpha(0).setDuration(300).start();
         btnMinus.setEnabled(false);
 
-        tvTotalHarga.setText("US$ " + valueTotalHarga.toString()+nomor_transaksi);
+        tvTotalHarga.setText("US$ " + valueTotalHarga.toString() + nomor_transaksi);
 
         ivNotiveUang.setVisibility(View.GONE);
 
@@ -113,7 +114,7 @@ public class TicketCheckOutActivity extends AppCompatActivity {
 
                 // agar ketika pertama kali dijalankan valuetotalharga sudah sesuai dengan yang ada di firebase
                 valueTotalHarga = valueJumlahTicket * valueHargaTicket;
-                tvTotalHarga.setText("US$ " + valueTotalHarga.toString()+" ");
+                tvTotalHarga.setText("US$ " + valueTotalHarga.toString() + " ");
 
 
             }
@@ -128,18 +129,18 @@ public class TicketCheckOutActivity extends AppCompatActivity {
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                valueJumlahTicket +=1;
+                valueJumlahTicket += 1;
                 tvJumlahTicket.setText(valueJumlahTicket.toString());
 
-                if (valueJumlahTicket > 1){
+                if (valueJumlahTicket > 1) {
                     btnMinus.animate().alpha(1).setDuration(300).start();
                     btnMinus.setEnabled(true);
                 }
 
                 valueTotalHarga = valueJumlahTicket * valueHargaTicket;
-                tvTotalHarga.setText("US$ " + valueTotalHarga.toString()+" ");
+                tvTotalHarga.setText("US$ " + valueTotalHarga.toString() + " ");
 
-                if (valueTotalHarga > myBalance){
+                if (valueTotalHarga > myBalance) {
                     btnPayNow.animate().translationY(250).alpha(0).setDuration(350).start();
                     btnPayNow.setEnabled(false);
                     tvMyBalance.setTextColor(Color.parseColor("#D1206B"));
@@ -150,18 +151,18 @@ public class TicketCheckOutActivity extends AppCompatActivity {
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                valueJumlahTicket -=1;
+                valueJumlahTicket -= 1;
                 tvJumlahTicket.setText(valueJumlahTicket.toString());
 
-                if (valueJumlahTicket < 2){
+                if (valueJumlahTicket < 2) {
                     btnMinus.animate().alpha(0).setDuration(300).start();
                     btnMinus.setEnabled(false);
                 }
 
                 valueTotalHarga = valueJumlahTicket * valueHargaTicket;
-                tvTotalHarga.setText("US$ " + valueTotalHarga.toString()+" ");
+                tvTotalHarga.setText("US$ " + valueTotalHarga.toString() + " ");
 
-                if (valueTotalHarga < myBalance){
+                if (valueTotalHarga < myBalance) {
                     btnPayNow.animate().translationY(0).alpha(1).setDuration(350).start();
                     btnPayNow.setEnabled(true);
                     tvMyBalance.setTextColor(Color.parseColor("#203DD1"));
@@ -171,7 +172,6 @@ public class TicketCheckOutActivity extends AppCompatActivity {
         });
 
 
-
         btnPayNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -179,14 +179,15 @@ public class TicketCheckOutActivity extends AppCompatActivity {
                 reference3 = FirebaseDatabase.getInstance().getReference()
                         .child("MyTickets")
                         .child(username_key_new)
-                        .child(tv_ticketcheckoutact_nama_wisata.getText().toString() + nomor_transaksi );
+                        .child(tv_ticketcheckoutact_nama_wisata.getText().toString() + nomor_transaksi);
                 reference3.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        reference3.getRef().child("id_ticket").setValue(tv_ticketcheckoutact_nama_wisata.getText().toString() + nomor_transaksi);
                         reference3.getRef().child("nama_wisata").setValue(tv_ticketcheckoutact_nama_wisata.getText().toString());
-                        reference3.getRef().child("lokasi").setValue(tv_ticketcheckoutact_lokasi);
-                        reference3.getRef().child("ketentuan").setValue(tv_ticketcheckoutact_ketentuan);
-
+                        reference3.getRef().child("lokasi").setValue(tv_ticketcheckoutact_lokasi.getText().toString());
+                        reference3.getRef().child("ketentuan").setValue(tv_ticketcheckoutact_ketentuan.getText().toString());
+                        reference3.getRef().child("jumlah_ticket").setValue(tv_ticketcheckoutact_ketentuan.toString());
 
                         reference3.getRef().child("date_wisata").setValue(date_wisata);
                         reference3.getRef().child("time_Wisata").setValue(time_wisata);
@@ -202,13 +203,28 @@ public class TicketCheckOutActivity extends AppCompatActivity {
                     }
                 });
 
+                // untuk membuat menyimpan sisa balance setelah membli ticket
+                reference4 = FirebaseDatabase.getInstance().getReference().child("Users").child(username_key_new);
+                reference4.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        valuesisabalance = myBalance - valueTotalHarga;
+                        reference4.getRef().child("user_balance").setValue(valuesisabalance);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
     }
 
     // ambil data dari local sharedpreference yang sebelumnya telah di simpan dari registerone
-    public void getUsernameLocal(){
+    public void getUsernameLocal() {
         SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
-        username_key_new = sharedPreferences.getString(username_key,"");
+        username_key_new = sharedPreferences.getString(username_key, "");
     }
 }
